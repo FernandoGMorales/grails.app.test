@@ -67,7 +67,7 @@
          </configuration>
       </plugin>	
 	
-      <!--plugin>
+      <plugin>
         <groupId>org.grails</groupId>
         <artifactId>grails-maven-plugin</artifactId>
         <version>${grails.version}</version>
@@ -86,7 +86,7 @@
             </goals>
           </execution>
         </executions>
-      </plugin-->
+      </plugin>
       
       <plugin>
 		<groupId>org.apache.maven.plugins</groupId>	
