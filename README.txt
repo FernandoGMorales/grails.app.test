@@ -5,12 +5,12 @@ Software needed:
 PostgreSQL: http://www.postgresql.org/download/ (I've installed version 9.1)
 *The installation and management of the DB will depend on the OS. Please refer to the link above before to preceed.
 
-1) Start the PostgreSQL DB server
-2) Start a PostgreSQL client, psql is included in the distro
-3) From the PostgreSQL client run the following script:
-	/script/pricy_prizer_db.sql
-4) Clone the git repo or download and unzip the file pricyprizer.zip
+1) Clone the git repo or download and unzip the file pricyprizer.zip
 	git clone https://github.com/YerbaMate/grails.app.test.git
+2) Start the PostgreSQL DB server
+3) Start a PostgreSQL client, psql is included in the distro
+4) From the PostgreSQL client run the following script:
+	/PrizyPricer/script/pricy_prizer_db.sql
 5) Go to the root directory of the project (/PrizyPricer), there you will find two scripts named grailsw.sh and grailsw.bat (sh for linux OS and .bat for Windows OS). I will proceed the execution of the script in a linux OS. In windows is the same with the grailsw.bat file.
 6) Build the app.
 	./grailsw compile
