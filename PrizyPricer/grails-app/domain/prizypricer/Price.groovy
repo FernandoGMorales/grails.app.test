@@ -14,4 +14,7 @@ class Price {
         notes(blank: false)
         date(blank: false)
     }
+    
+    static belongsTo = [product: Product]
+    
 }
