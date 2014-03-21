@@ -18,11 +18,8 @@ PostgreSQL: http://www.postgresql.org/download/ (I've installed version 9.1)
 6) Go to the root directory of the project (/PrizyPricer), there you will find two scripts named grailsw.sh and grailsw.bat (sh for linux OS and .bat for Windows OS). I will proceed the execution of the script in a linux OS. In windows is the same with the grailsw.bat file.
 7) Build the app.
 	./grailsw compile
-8) Run unit and integration tests:
+8) Run tests:
 	./grailsw test-app
-   Choose what kind of tests to run:
-	./grailsw test-app unit:
-	./grailsw test-app integration:
    Choose a particular test to run:
 	./grailsw grails test-app Product (This will execute ProductTest.groovy)	
 9) Build and run the app:

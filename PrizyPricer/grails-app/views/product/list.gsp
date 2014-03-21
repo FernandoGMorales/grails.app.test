@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<meta name="layout" content="main">
+	</head>
+	<body>
+		<div class="nav" role="navigation">
+			<ul> 
+				<li><a class="home" href="/PrizyPricer/">Home</a></li>
+			</ul>
+		</div>
+		<div class="nav">
+			<formset>
+				<legend>Search by barcode</legend>
+				<g:form action="show">
+					<g:textField name="barcode"/>
+					<g:submitButton name="search" value="Search"/>
+				</g:form>
+			</formset>
+		</div>
+		<h1>Product List</h1>
+		<div>
+			<table>
+				<tr>
+					<th>Barcode</th>
+					<th>Name</th>
+					<th>Description</th>
+				</tr>
+				<g:each in="${productList}" var="product">
+					<tr>
+						<td><a href="${createLink(action:'show', params:[barcode:product.barcode])}">${product.barcode}</a></td>
+						<td>${product.name}</td>
+						<td>${product.description}</td>
+					</tr>
+				</g:each>
+			</table>
+		</div>
+		<div class="pagination">
+			<g:paginate controller="product" total="${productCount}"/>
+		</div>
+	</body>
+</html>

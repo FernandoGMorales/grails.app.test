@@ -1,21 +1,46 @@
 package prizypricer
 
 class ProductController {
+	final int MAX_RESULTS = 5
 	ProductService productService
-    static scaffold = true
+    static scaffold = false
     
-    def show() {
-        def product = Product.get(params.id)
-        log.error(product)
-        def priceList = productService.getPrices(product);
-        def avgPrice = productService.getAveragePrice(priceList)
-        def highestPrice = priceList.max()
-        def lowestPrice = priceList.min()
-        def priceCount = priceList.size()
-        def idealPrice = productService.getIdealPrice(priceList,productService.idealPriceFormula)
-        def model = [name:product.name, barcode:product.barcode, description:product.description, 
-			avgPrice:avgPrice, highestPrice:highestPrice, lowestPrice:lowestPrice, priceCount:priceCount, idealPrice:idealPrice]
-        render model
-    }
+    def index() {
+		redirect(action:"list")
+	}
+	
+	def list() {
+		params.max = MAX_RESULTS
+		def productCount = Product.count()
+		def productList = Product.list(params) 
+		[productList:productList, productCount:productCount]
+	}
+    
+    def search() {
+	}
+	
+	def show() {
+		def product = Product.findByBarcode(params.barcode)
+		log.error(product)
+		if(product!=null) {
+			def avgPrice = 0
+			def highestPrice = 0
+			def lowestPrice = 0
+			def priceCount = 0
+			def idealPrice = 0
+			def priceList = productService.getPrices(product);
+			if(priceList!=null && !priceList.isEmpty()) {
+				avgPrice = productService.getAveragePrice(priceList)
+				highestPrice = priceList.max()
+				lowestPrice = priceList.min()
+				priceCount = priceList.size()
+				idealPrice = productService.getIdealPrice(priceList,productService.idealPriceFormula)
+			}
+			def model = [name:product.name, barcode:product.barcode, description:product.description, 
+				avgPrice:avgPrice, highestPrice:highestPrice, lowestPrice:lowestPrice, priceCount:priceCount, idealPrice:idealPrice]
+			return model
+		}
+		else redirect action: 'list'
+	}
     
 }

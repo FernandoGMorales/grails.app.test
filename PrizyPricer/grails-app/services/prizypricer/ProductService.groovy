@@ -14,6 +14,11 @@ class ProductService {
 		return prices.sum()/prices.size() 
     }
     
+    /**
+     * In order to calculate any particular "ideal price", do the folowing:
+     *  a) define the closure to hold the formula for the ideal price
+     *  b) from the ProductController.groovy, call getIdealPrice() method with the desired closure/formula as a second parameter
+     */
 	float getIdealPrice(List prices, Closure formula) {
 		formula(prices)
     }
