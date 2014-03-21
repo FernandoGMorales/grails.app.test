@@ -4,6 +4,7 @@ class ProductController {
 	final int MAX_RESULTS = 5
 	ProductService productService
     static scaffold = false
+    static Script script = new GroovyShell().parse(new File("scripts/formula.groovy"))
     
     def index() {
 		redirect(action:"list")
@@ -34,7 +35,7 @@ class ProductController {
 				highestPrice = priceList.max()
 				lowestPrice = priceList.min()
 				priceCount = priceList.size()
-				idealPrice = productService.getIdealPrice(priceList,productService.idealPriceFormula)
+				idealPrice = script.with{formula(priceList)}
 			}
 			def model = [name:product.name, barcode:product.barcode, description:product.description, 
 				avgPrice:avgPrice, highestPrice:highestPrice, lowestPrice:lowestPrice, priceCount:priceCount, idealPrice:idealPrice]
