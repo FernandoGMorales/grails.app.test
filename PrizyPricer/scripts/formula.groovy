@@ -1,3 +1,8 @@
+/*
+ * In order to modify the calculation of the "ideal price", feel free to customize the function below as required.
+ *
+ */
+
 def formula(List prices) { 
 		Collections.sort(prices)
 		prices.remove(prices.size()-2)
