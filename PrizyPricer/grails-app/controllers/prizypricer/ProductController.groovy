@@ -1,7 +1,7 @@
 package prizypricer
 
 class ProductController {
-	final int MAX_RESULTS = 5
+	static final int MAX_RESULTS = 5
 	ProductService productService
     static scaffold = false
     static Script script = new GroovyShell().parse(new File("scripts/formula.groovy"))
@@ -11,7 +11,9 @@ class ProductController {
 	}
 	
 	def list() {
-		params.max = MAX_RESULTS
+		params.max = ProductController.MAX_RESULTS
+		params.sort = "barcode"
+		params.order = "asc"
 		def productCount = Product.count()
 		def productList = Product.list(params) 
 		[productList:productList, productCount:productCount]
@@ -37,8 +39,8 @@ class ProductController {
 				priceCount = priceList.size()
 				idealPrice = script.with{formula(priceList)}
 			}
-			def model = [name:product.name, barcode:product.barcode, description:product.description, 
-				avgPrice:avgPrice, highestPrice:highestPrice, lowestPrice:lowestPrice, priceCount:priceCount, idealPrice:idealPrice]
+			def model = [name:product.name, barcode:product.barcode, description:product.description, avgPrice:avgPrice, 
+					highestPrice:highestPrice, lowestPrice:lowestPrice, priceCount:priceCount, idealPrice:idealPrice]
 			return model
 		}
 		else redirect action: 'list'
