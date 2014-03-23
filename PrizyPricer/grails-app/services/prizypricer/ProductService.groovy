@@ -10,8 +10,4 @@ class ProductService {
 		return list
     }
     
-    float getAveragePrice(List prices) {
-		return prices.sum()/prices.size() 
-    }
-    
 }

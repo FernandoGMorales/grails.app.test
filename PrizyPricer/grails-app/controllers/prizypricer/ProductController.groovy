@@ -27,7 +27,7 @@ class ProductController {
 			def idealPrice = 0
 			def priceList = productService.getPrices(product);
 			if(priceList!=null && !priceList.isEmpty()) {
-				avgPrice = productService.getAveragePrice(priceList)
+				avgPrice = priceList.sum()/priceList.size()
 				highestPrice = priceList.max()
 				lowestPrice = priceList.min()
 				priceCount = priceList.size()
