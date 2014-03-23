@@ -3,7 +3,7 @@ package prizypricer
 import static org.junit.Assert.*
 import org.junit.*
 
-class ProductLoaderTests {
+class AddPriceTests {
 
     @Before
     void setUp() {
