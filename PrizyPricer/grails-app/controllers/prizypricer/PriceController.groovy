@@ -9,7 +9,9 @@ class PriceController {
 		params.sort = "barcode"
 		params.order = "asc"
 		def productCount = Product.count()
-		def productList = Product.list(params) 
+		def productList = Product.list(params)
+		if(productList==null || productList.isEmpty())
+				log.error('Product list is either null or empty!') 
 		[productList:productList, productCount:productCount]
 	}
 	
@@ -18,7 +20,10 @@ class PriceController {
 		log.error(product)
 		if(product!=null) 
 			[productID:product.id, name:product.name, barcode:product.barcode, description:product.description]
-		else redirect action: 'list'	
+		else {
+			log.error('Cannot find product with barcode: ' + params.barcode)
+			redirect action: 'list'
+		}	
 	}
 	
 	def save() {
@@ -31,8 +36,10 @@ class PriceController {
 			price.setDate(new Date())
 			product.addToPrices(price)
 			if(!product.save()) 
-				println("Error!")
+				log.error('Cannot save product with id: ' + params.productID)
 		}
+		else 
+			log.error('Cannot find product with id: ' + params.productID)
 		redirect action: 'list'
 	}
 	
