@@ -11,7 +11,16 @@ import org.junit.*
 @TestFor(Product)
 class ProductTests {
 
-    void testSomething() {
-       fail "Implement me"
+    void testConstraints() {
+		def product = new Product(name:'Rice', description:'food', barcode:'1000')
+        mockForConstraintsTests(Product, [product])
+        assert product.validate()
     }
+    
+    void testConstraintsViolation() {
+		def product = new Product(description:'food', barcode:'1000')
+        mockForConstraintsTests(Product, [product])
+        assert !product.validate()
+    }
+        
 }

@@ -5,10 +5,7 @@ class ProductController {
 	ProductService productService
     static scaffold = false
     static Script script = new GroovyShell().parse(new File("scripts/formula.groovy"))
-    
-    def index() {
-		redirect(action:"list")
-	}
+    static defaultAction = 'list'
 	
 	def list() {
 		params.max = ProductController.MAX_RESULTS
@@ -17,9 +14,6 @@ class ProductController {
 		def productCount = Product.count()
 		def productList = Product.list(params) 
 		[productList:productList, productCount:productCount]
-	}
-    
-    def search() {
 	}
 	
 	def show() {

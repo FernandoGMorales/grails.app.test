@@ -11,7 +11,7 @@ import org.junit.*
 @TestFor(ProductService)
 class ProductServiceTests {
 
-    void testSomething() {
-        fail "Implement me"
+    void testGetPrices() {
+        
     }
 }

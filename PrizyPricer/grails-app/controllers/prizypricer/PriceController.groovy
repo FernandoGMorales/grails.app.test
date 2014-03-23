@@ -1,11 +1,8 @@
 package prizypricer
 
 class PriceController {
-	static scaffold = true
-	
-	def index() {
-		redirect(action:"list")
-	}
+	static scaffold = false
+	static defaultAction = 'list'
 	
 	def list() {
 		params.max = ProductController.MAX_RESULTS
@@ -14,9 +11,6 @@ class PriceController {
 		def productCount = Product.count()
 		def productList = Product.list(params) 
 		[productList:productList, productCount:productCount]
-	}
-	
-	def search() {
 	}
 	
 	def create() {
@@ -31,9 +25,6 @@ class PriceController {
 		Product product = Product.get(params.productID)
 		if(product!=null) {
 			Price price = new Price()
-			println(params.price)
-			println(params.store)
-			println(params.notes)
 			price.setPrice(params.price as Float)
 			price.setStore(params.store)
 			price.setNotes(params.notes)
