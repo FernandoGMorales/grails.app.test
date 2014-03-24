@@ -7,7 +7,7 @@ import org.junit.*
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
 @TestFor(PriceController)
-@Mock(Product)
+@Mock([Product,ProductService])
 class PriceControllerTests {
 
     void testList() {
@@ -21,7 +21,7 @@ class PriceControllerTests {
     
     void testCreate() {
         def product = new Product(barcode:'1000', name:'brown rice', description:'food').save()
-        params.barcode = 1000
+        params.barcode = '1000'
         def model = controller.create()
         assertNotNull model.productID
         assertNotNull model.name

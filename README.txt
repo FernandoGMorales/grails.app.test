@@ -11,22 +11,20 @@ PostgreSQL: http://www.postgresql.org/download/
 *The installation and management of the DB will depend on the OS. Please refer to the link above before to preceed.
 
 1) Start the PostgreSQL DB server
-2) Create/add the following PostgreSQL superuser:
+2) Create/add the following PostgreSQL user:
 	 user:fernando, pass: fernando
 *for further details regarding to user management, please refer to: http://www.postgresql.org/docs/9.1/static/user-manag.html
-3) Create the database prizypricer_db
+3) Create the database "pricer_test"
 *for further details regarding to database management, please refer to: http://www.postgresql.org/docs/9.1/static/managing-databases.html
-4) Unzip the file pricyprizer.zip
-5) In order to create the tables and fill them with some data, from a PostgreSQL client run the following script:
-	/PrizyPricer/script/pricy_prizer_db.sql
+4) Unzip the file prizyprizer.zip
+5) In order to restore the db state, from a PostgreSQL client run the following script:
+	/PrizyPricer/script/prizypricer_db.sql
 6) Go to the root directory of the project (/PrizyPricer), there you will find two scripts named grailsw.sh and grailsw.bat. I will proceed the execution of the script in a linux OS.
 7) Build the app.
 	./grailsw compile
 8) Run tests:
-	./grailsw test-app
-   Choose a particular test to run:
-	./grailsw grails test-app Product (This will execute ProductTest.groovy)	
-9) Build and run the app:
+	./grailsw test-app	
+9) Run the app:
 	./grailsw run-app
 10) Open a browser and go to the following url:
 	http://localhost:8080/PrizyPricer/

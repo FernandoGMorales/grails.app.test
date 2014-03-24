@@ -14,7 +14,7 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:postgresql://localhost:5432/testDB"
+            url = "jdbc:postgresql://localhost:5432/pricer_test"
             username = "fernando"
             password = "fernando"
             // url = "jdbc:h2:mem:devDb;MVCC=TRUE"

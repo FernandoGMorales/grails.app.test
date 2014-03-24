@@ -22,26 +22,26 @@ class ProductControllerTests {
     }
     
     void testShow() {
-		def product = new Product(barcode:'1000', name:'brown rice', description:'food')
-		product.addToPrices(new Price())
-		product.addToPrices(new Price())
-		product.addToPrices(new Price())
-		product.save()
-		params.barcode = 1000
+		def p = new Product(barcode:'1001', name:'onion rings', description:'food').save()
+        p.addToPrices(new Price(price: '3', store:'the store', notes:'some notes', date:new Date()))
+        p.addToPrices(new Price(price: '2', store:'the store', notes:'some notes', date:new Date()))
+        p.addToPrices(new Price(price: '4', store:'the store', notes:'some notes', date:new Date()))
+		p.save()
+		params.barcode = '1001'
 		def model = controller.show()
-		assertNotNull model.name
-		assertNotNull model.barcode
-		assertNotNull model.description
-		assertNotNull model.avgPrice	
-		assertNotNull model.highestPrice	
-		assertNotNull model.lowestPrice
-		assertNotNull model.idealPrice
-		assertNotNull model.priceCount
+		assertEquals '1001', model.barcode
+		assertEquals 'onion rings', model.name
+		assertEquals 'food', model.description
+		assertEquals 3, model.avgPrice, 0.001
+		assertEquals 4, model.highestPrice, 0.001
+		assertEquals 2, model.lowestPrice, 0.001
+		assertEquals 2.4, model.idealPrice, 0.001
+		assertEquals 3, model.priceCount
     }
     
     void testShowProductNotFound() {
 		def product = new Product(barcode:'1000', name:'brown rice', description:'food')
-		params.barcode = 1001
+		params.barcode = '1001'
 		def model = controller.show()
 		assert response.redirectedUrl == '/product/list'
     }

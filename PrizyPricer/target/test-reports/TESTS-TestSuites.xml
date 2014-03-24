@@ -1,14 +1,164 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="banghomax" id="0" name="ProductServiceTests" package="prizypricer" tests="1" time="0.104" timestamp="2014-03-23T02:50:55">
+  <testsuite errors="0" failures="0" hostname="banghomax" id="0" name="AddPriceTests" package="prizypricer" tests="1" time="0.06" timestamp="2014-03-24T02:19:34">
       <properties />
 
-      <testcase classname="prizypricer.ProductServiceTests" name="testGetPrices" time="0.102" />
+      <testcase classname="prizypricer.AddPriceTests" name="testAddPrice" time="0.057" />
 
-      <system-out><![CDATA[--Output from testGetPrices--
+      <system-out><![CDATA[--Output from testAddPrice--
 ]]></system-out>
 
-      <system-err><![CDATA[--Output from testGetPrices--
+      <system-err><![CDATA[--Output from testAddPrice--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="banghomax" id="1" name="ListProductsTests" package="prizypricer" tests="1" time="0.117" timestamp="2014-03-24T02:19:34">
+      <properties />
+
+      <testcase classname="prizypricer.ListProductsTests" name="testListProducts" time="0.115" />
+
+      <system-out><![CDATA[--Output from testListProducts--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testListProducts--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="banghomax" id="2" name="ProductViewerTests" package="prizypricer" tests="1" time="0.522" timestamp="2014-03-24T02:19:33">
+      <properties />
+
+      <testcase classname="prizypricer.ProductViewerTests" name="testShow" time="0.521" />
+
+      <system-out><![CDATA[--Output from testShow--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testShow--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="banghomax" id="3" name="PriceControllerTests" package="prizypricer" tests="4" time="2.142" timestamp="2014-03-24T02:19:23">
+      <properties />
+
+      <testcase classname="prizypricer.PriceControllerTests" name="testList" time="1.427" />
+
+      <testcase classname="prizypricer.PriceControllerTests" name="testCreate" time="0.095" />
+
+      <testcase classname="prizypricer.PriceControllerTests" name="testCreateFail" time="0.264" />
+
+      <testcase classname="prizypricer.PriceControllerTests" name="testSave" time="0.152" />
+
+      <system-out><![CDATA[--Output from testList--
+2014-03-23 23:19:24,196 [main] WARN  servlet.DefaultGrailsApplicationAttributes  - Bean named 'groovyPagesUriService' is missing.
+
+--Output from testCreate--
+2014-03-23 23:19:24,557 [main] WARN  servlet.DefaultGrailsApplicationAttributes  - Bean named 'groovyPagesUriService' is missing.
+
+--Output from testCreateFail--
+2014-03-23 23:19:24,651 [main] WARN  servlet.DefaultGrailsApplicationAttributes  - Bean named 'groovyPagesUriService' is missing.
+
+--Output from testSave--
+2014-03-23 23:19:24,918 [main] WARN  servlet.DefaultGrailsApplicationAttributes  - Bean named 'groovyPagesUriService' is missing.
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testList--
+--Output from testCreate--
+--Output from testCreateFail--
+2014-03-23 23:19:24,708 [main] ERROR prizypricer.PriceController  - Cannot find product with barcode: null
+
+--Output from testSave--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="banghomax" id="4" name="PriceTests" package="prizypricer" tests="2" time="0.459" timestamp="2014-03-24T02:19:22">
+      <properties />
+
+      <testcase classname="prizypricer.PriceTests" name="testConstraintsViolation" time="0.08" />
+
+      <testcase classname="prizypricer.PriceTests" name="testConstraints" time="0.031" />
+
+      <system-out><![CDATA[--Output from testConstraintsViolation--
+--Output from testConstraints--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testConstraintsViolation--
+--Output from testConstraints--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="banghomax" id="5" name="ProductControllerTests" package="prizypricer" tests="3" time="0.754" timestamp="2014-03-24T02:19:25">
+      <properties />
+
+      <testcase classname="prizypricer.ProductControllerTests" name="testList" time="0.412" />
+
+      <testcase classname="prizypricer.ProductControllerTests" name="testShow" time="0.173" />
+
+      <testcase classname="prizypricer.ProductControllerTests" name="testShowProductNotFound" time="0.155" />
+
+      <system-out><![CDATA[--Output from testList--
+2014-03-23 23:19:25,421 [main] WARN  servlet.DefaultGrailsApplicationAttributes  - Bean named 'groovyPagesUriService' is missing.
+
+--Output from testShow--
+2014-03-23 23:19:25,697 [main] WARN  servlet.DefaultGrailsApplicationAttributes  - Bean named 'groovyPagesUriService' is missing.
+
+--Output from testShowProductNotFound--
+2014-03-23 23:19:25,867 [main] WARN  servlet.DefaultGrailsApplicationAttributes  - Bean named 'groovyPagesUriService' is missing.
+
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testList--
+--Output from testShow--
+--Output from testShowProductNotFound--
+2014-03-23 23:19:25,926 [main] ERROR prizypricer.ProductController  - Cannot find product with barcode: 1001
+
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="banghomax" id="6" name="ProductServiceTests" package="prizypricer" tests="6" time="1.587" timestamp="2014-03-24T02:19:21">
+      <properties />
+
+      <testcase classname="prizypricer.ProductServiceTests" name="testGetProductByID" time="0.306" />
+
+      <testcase classname="prizypricer.ProductServiceTests" name="testGetProductCount" time="0.768" />
+
+      <testcase classname="prizypricer.ProductServiceTests" name="testGetPrices" time="0.068" />
+
+      <testcase classname="prizypricer.ProductServiceTests" name="testGetAllProducts" time="0.221" />
+
+      <testcase classname="prizypricer.ProductServiceTests" name="testFindByBarcode" time="0.09" />
+
+      <testcase classname="prizypricer.ProductServiceTests" name="testSaveProduct" time="0.038" />
+
+      <system-out><![CDATA[--Output from testGetProductByID--
+--Output from testGetProductCount--
+--Output from testGetPrices--
+--Output from testGetAllProducts--
+--Output from testFindByBarcode--
+--Output from testSaveProduct--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testGetProductByID--
+--Output from testGetProductCount--
+--Output from testGetPrices--
+--Output from testGetAllProducts--
+--Output from testFindByBarcode--
+--Output from testSaveProduct--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="banghomax" id="7" name="ProductTests" package="prizypricer" tests="2" time="1.511" timestamp="2014-03-24T02:19:19">
+      <properties />
+
+      <testcase classname="prizypricer.ProductTests" name="testConstraintsViolation" time="1.298" />
+
+      <testcase classname="prizypricer.ProductTests" name="testConstraints" time="0.048" />
+
+      <system-out><![CDATA[--Output from testConstraintsViolation--
+--Output from testConstraints--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testConstraintsViolation--
+--Output from testConstraints--
 ]]></system-err>
 
   </testsuite>

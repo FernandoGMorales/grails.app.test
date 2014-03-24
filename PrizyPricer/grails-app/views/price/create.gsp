@@ -28,15 +28,15 @@
 						</li>
 						<li class="fieldcontain">
 							<span class="property-label">Price:</span>
-							<g:textField name="price"/>
+							<g:field type="number" name="price" min="0" step="0.01" required="true"/>
 						</li>
 						<li class="fieldcontain">
 							<span class="property-label">Store:</span>
-							<g:textField name="store"/>
+							<g:field type="text" name="store" maxlength="20" required="true"/>
 						</li>
 						<li class="fieldcontain">
 							<span class="property-label">Notes:</span>
-							<g:textField name="notes"/>
+							<g:field type="text" name="notes" maxlength="20" required="true"/>
 						</li>
 					</ol>
 				</fieldset>

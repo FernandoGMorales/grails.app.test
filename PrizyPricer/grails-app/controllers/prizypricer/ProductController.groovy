@@ -11,15 +11,15 @@ class ProductController {
 		params.max = ProductController.MAX_RESULTS
 		params.sort = "barcode"
 		params.order = "asc"
-		def productCount = Product.count()
-		def productList = Product.list(params)
+		def productCount = productService.getProductCount()
+		def productList = productService.getAllProducts(params)
 		if(productList==null || productList.isEmpty())
-			log.error('Product list is either null or empty!')
+			log.info('Product list is either null or empty!')
 		[productList:productList, productCount:productCount]
 	}
 	
 	def show() {
-		def product = Product.findByBarcode(params.barcode)
+		def product = productService.findByBarcode(params.barcode)
 		if(product!=null) {
 			def avgPrice = 0
 			def highestPrice = 0
@@ -35,7 +35,7 @@ class ProductController {
 				idealPrice = script.with{formula(priceList)}
 			}
 			else 
-				log.error('Price list is either null or empty!')
+				log.info('Price list is either null or empty!')
 			def model = [name:product.name, barcode:product.barcode, description:product.description, avgPrice:avgPrice, 
 					highestPrice:highestPrice, lowestPrice:lowestPrice, priceCount:priceCount, idealPrice:idealPrice]
 			return model

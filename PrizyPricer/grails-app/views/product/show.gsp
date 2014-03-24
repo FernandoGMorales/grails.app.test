@@ -26,19 +26,27 @@
 				</li>
 				<li class="fieldcontain">
 					<span class="property-label">Average price:</span>
-					<span class="property-value" aria-labelledby="productBarcode-label">${avgPrice}</span>
+					<span class="property-value" aria-labelledby="productBarcode-label">
+						<g:formatNumber number="${avgPrice}" type="currency" currencyCode="USD" />
+					</span>
 				</li>
 				<li class="fieldcontain">
 					<span class="property-label">Highest price:</span>
-					<span class="property-value" aria-labelledby="productBarcode-label">${highestPrice}</span>
+					<span class="property-value" aria-labelledby="productBarcode-label">
+						<g:formatNumber number="${highestPrice}" type="currency" currencyCode="USD" />
+					</span>
 				</li>
 				<li class="fieldcontain">
 					<span class="property-label">Lowest price:</span>
-					<span class="property-value" aria-labelledby="productBarcode-label">${lowestPrice}</span>
+					<span class="property-value" aria-labelledby="productBarcode-label">
+						<g:formatNumber number="${lowestPrice}" type="currency" currencyCode="USD" />
+					</span>
 				</li>
 				<li class="fieldcontain">
 					<span class="property-label">Ideal price:</span>
-					<span class="property-value" aria-labelledby="productBarcode-label">${idealPrice}</span>
+					<span class="property-value" aria-labelledby="productBarcode-label">
+						<g:formatNumber number="${idealPrice}" type="currency" currencyCode="USD" />
+					</span>
 				</li>
 				<li class="fieldcontain"> 
 					<span class="property-label">Price count:</span>

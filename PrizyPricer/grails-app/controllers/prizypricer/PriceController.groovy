@@ -2,22 +2,22 @@ package prizypricer
 
 class PriceController {
 	static scaffold = false
+	ProductService productService
 	static defaultAction = 'list'
 	
 	def list() {
 		params.max = ProductController.MAX_RESULTS
 		params.sort = "barcode"
 		params.order = "asc"
-		def productCount = Product.count()
-		def productList = Product.list(params)
+		def productCount = productService.getProductCount()
+		def productList = productService.getAllProducts(params)
 		if(productList==null || productList.isEmpty())
-				log.error('Product list is either null or empty!') 
+				log.info('Product list is either null or empty!') 
 		[productList:productList, productCount:productCount]
 	}
 	
 	def create() {
-		def product = Product.findByBarcode(params.barcode)
-		log.error(product)
+		def product = productService.findByBarcode(params.barcode)
 		if(product!=null) 
 			[productID:product.id, name:product.name, barcode:product.barcode, description:product.description]
 		else {
@@ -27,7 +27,7 @@ class PriceController {
 	}
 	
 	def save() {
-		Product product = Product.get(params.productID)
+		def product = productService.getProductByID(Long.valueOf(params.productID))
 		if(product!=null) {
 			Price price = new Price()
 			price.setPrice(params.price as Float)
@@ -35,7 +35,7 @@ class PriceController {
 			price.setNotes(params.notes)
 			price.setDate(new Date())
 			product.addToPrices(price)
-			if(!product.save()) 
+			if(!productService.saveProduct(product)) 
 				log.error('Cannot save product with id: ' + params.productID)
 		}
 		else 
