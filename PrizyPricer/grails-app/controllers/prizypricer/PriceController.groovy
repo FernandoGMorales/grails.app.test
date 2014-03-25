@@ -16,6 +16,19 @@ class PriceController {
 		[productList:productList, productCount:productCount]
 	}
 	
+	def listFiltered() {
+		def product = productService.findByBarcode(params.barcode)
+		if(product!=null) {
+			def productList = new ArrayList()
+			productList.add(product)
+			if(productList==null || productList.isEmpty())
+				log.info('Product list is either null or empty!')
+			def model = [productList:productList, productCount:1]
+			render(view: "list", model:model)
+		}
+		else redirect action: 'list'
+	}
+	
 	def create() {
 		def product = productService.findByBarcode(params.barcode)
 		if(product!=null) 

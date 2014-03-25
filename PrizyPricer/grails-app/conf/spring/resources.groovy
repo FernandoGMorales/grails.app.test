@@ -1,3 +1,8 @@
-// Place your Spring DSL code here
+import prizypricer.formula.FormulaImpl
+
 beans = {
+	
+	idealPriceService(FormulaImpl) {
+    }
+	
 }

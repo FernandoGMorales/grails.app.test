@@ -1,7 +1,7 @@
 package prizypricer
 
 class Price {
-	float price
+	BigDecimal price
 	String store
 	String notes
 	Date date

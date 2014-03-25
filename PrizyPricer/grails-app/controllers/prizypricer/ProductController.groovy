@@ -3,8 +3,9 @@ package prizypricer
 class ProductController {
 	static final int MAX_RESULTS = 5
 	ProductService productService
+	def idealPriceService
     static scaffold = false
-    static Script script = new GroovyShell().parse(new File("scripts/formula.groovy"))
+    //static Script script = new GroovyShell().parse(new File("scripts/formula.groovy"))
     static defaultAction = 'list'
 	
 	def list() {
@@ -16,6 +17,19 @@ class ProductController {
 		if(productList==null || productList.isEmpty())
 			log.info('Product list is either null or empty!')
 		[productList:productList, productCount:productCount]
+	}
+	
+	def listFiltered() {
+		def product = productService.findByBarcode(params.barcode)
+		if(product!=null) {
+			def productList = new ArrayList()
+			productList.add(product)
+			if(productList==null || productList.isEmpty())
+				log.info('Product list is either null or empty!')
+			def model = [productList:productList, productCount:1]
+			render(view: "list", model:model)
+		}
+		else redirect action: 'list'
 	}
 	
 	def show() {
@@ -32,7 +46,7 @@ class ProductController {
 				highestPrice = priceList.max()
 				lowestPrice = priceList.min()
 				priceCount = priceList.size()
-				idealPrice = script.with{formula(priceList)}
+				idealPrice = idealPriceService.apply(priceList)
 			}
 			else 
 				log.info('Price list is either null or empty!')

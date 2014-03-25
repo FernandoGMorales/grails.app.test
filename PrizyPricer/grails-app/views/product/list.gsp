@@ -6,12 +6,13 @@
 		<div class="nav" role="navigation">
 			<ul> 
 				<li><a class="home" href="/PrizyPricer/">Home</a></li>
+				<li><g:link class="list" action="list">Product list</g:link></li>
 			</ul>
 		</div>
 		<div class="nav">
 			<formset>
 				<legend>Search by barcode</legend>
-				<g:form action="show">
+				<g:form action="listFiltered">
 					<g:textField name="barcode"/>
 					<g:submitButton name="search" value="Search"/>
 				</g:form>
