@@ -23,7 +23,7 @@ class ProductService {
 	}
 	
     List getPrices(Product product) {
-		def list = new ArrayList();
+		def list = new ArrayList()
 		for(price in product.prices) {
 			list.add(price.price)
 		}

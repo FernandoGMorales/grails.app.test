@@ -1,7 +1,5 @@
 package prizypricer
 
-
-
 import grails.test.mixin.*
 import org.junit.*
 
@@ -9,8 +7,10 @@ import org.junit.*
  * See the API for {@link grails.test.mixin.web.ControllerUnitTestMixin} for usage instructions
  */
 @TestFor(ProductController)
-@Mock([Product, ProductService])
+@Mock([Product,ProductService])
 class ProductControllerTests {
+	
+	def productService
 
     void testList() {
 		new Product(barcode:'1000', name:'brown rice', description:'food').save()
@@ -21,7 +21,25 @@ class ProductControllerTests {
 		assertEquals model.productList?.size(), Product.count()
     }
     
+    void testListFiltered() {
+		new Product(barcode:'1001', name:'onion rings', description:'food').save()
+		params.barcode = '1001'
+		controller.listFiltered()
+		assert model.productList
+		assert 1, model.productCount
+    }
+    
+    void testListFilteredFail() {
+		new Product(barcode:'1000', name:'brown rice', description:'food').save()
+		params.barcode = '1001'
+		controller.listFiltered()
+		assert response.redirectedUrl == '/product/list'
+    }
+    
     void testShow() {
+		defineBeans {
+			idealPriceService(prizypricer.formula.FormulaImpl)
+		}
 		def p = new Product(barcode:'1001', name:'onion rings', description:'food').save()
         p.addToPrices(new Price(price: '3', store:'the store', notes:'some notes', date:new Date()))
         p.addToPrices(new Price(price: '2', store:'the store', notes:'some notes', date:new Date()))

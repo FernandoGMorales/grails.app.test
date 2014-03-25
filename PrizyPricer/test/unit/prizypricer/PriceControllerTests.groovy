@@ -19,6 +19,21 @@ class PriceControllerTests {
 		assertEquals model.productList?.size(), Product.count()
     }
     
+    void testListFiltered() {
+		new Product(barcode:'1001', name:'onion rings', description:'food').save()
+		params.barcode = '1001'
+		controller.listFiltered()
+		assert model.productList
+		assert 1, model.productCount
+    }
+    
+    void testListFilteredFail() {
+		new Product(barcode:'1000', name:'brown rice', description:'food').save()
+		params.barcode = '1001'
+		controller.listFiltered()
+		assert response.redirectedUrl == '/price/list'
+    }
+    
     void testCreate() {
         def product = new Product(barcode:'1000', name:'brown rice', description:'food').save()
         params.barcode = '1000'
